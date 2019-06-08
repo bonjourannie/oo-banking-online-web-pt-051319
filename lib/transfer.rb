@@ -26,9 +26,9 @@ class Transfer
 		elsif @status == "complete"
 			nil
 		elsif !valid?
-			@status = "rejected"
+			@status == "rejected"
 			"Transaction rejected. Please check your account balance."
-			binding.pry
+		
 		else
 			@sender.deposit(-@amount)
 			@receiver.deposit(@amount)
