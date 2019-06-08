@@ -1,6 +1,19 @@
-require 'pry'
+class Transfer
+  # your code here	
+   attr_accessor :sender, :receiver, :amount, :status
 
-def execute_transaction
+   def initialize(sender, receiver, amount, status="pending")
+    @sender = sender
+    @receiver = receiver
+    @amount = amount
+    @status = status
+  end
+
+   def valid?
+    sender.valid? && receiver.valid?
+  end
+
+   def execute_transaction
     if valid? && sender.balance > amount && self.status == "pending"
       sender.withdrawal(self.amount)
       receiver.deposit(self.amount)
@@ -24,3 +37,4 @@ def execute_transaction
 
 
 
+ end
